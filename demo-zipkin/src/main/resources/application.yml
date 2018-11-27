@@ -1,0 +1,34 @@
+#logging:
+#  level:
+#    root: debug
+
+
+
+
+server:
+  port: 8001
+  
+  
+spring:
+  application:
+    name: demo-zipkin
+  sleuth:
+    sampler:
+      probability: 1.0
+    web:
+      skipPattern: "(^cleanup.*)"
+      
+  stream:
+    kafka:
+      binder:
+        headers:
+          - spanId
+          - spanSampled
+          - spanProcessId
+          - spanParentSpanId
+          - spanTraceId
+          - spanName
+          - messageSent      
+      
+      
+      
