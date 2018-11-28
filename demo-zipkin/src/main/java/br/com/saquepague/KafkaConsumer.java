@@ -15,8 +15,15 @@ public class KafkaConsumer {
 	@KafkaListener(topics = "tracingZipkinTopic", groupId = "demo-group1")
 	public void receive(ConsumerRecord<String, String> consumerRecord) throws Exception {
 		
-		LOGGER.info("tracingTopic received payload='{}'", consumerRecord.toString());
+		LOGGER.info("tracingZipkinTopic received payload='{}'", consumerRecord.toString());
 
+	}
+
+	@KafkaListener(topics = "tracingZipkinTopic2", groupId = "demo-group1")
+	public void receive2(ConsumerRecord<String, String> consumerRecord) throws Exception {
+		
+		LOGGER.info("tracingZipkinTopic2 received payload='{}'", consumerRecord.toString());
+		
 	}
 
 }

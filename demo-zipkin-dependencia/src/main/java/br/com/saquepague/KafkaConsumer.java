@@ -16,10 +16,15 @@ public class KafkaConsumer {
 
 	private final RestTemplate restTemplate;
 	
-	public KafkaConsumer(RestTemplate restTemplate) {
+	private final KafkaProducer kafkaProducer;
+	
+
+	public KafkaConsumer(RestTemplate restTemplate, KafkaProducer kafkaProducer) {
 		super();
 		this.restTemplate = restTemplate;
+		this.kafkaProducer = kafkaProducer;
 	}
+
 
 
 
@@ -28,8 +33,20 @@ public class KafkaConsumer {
 		
 		ResponseEntity<String> response = restTemplate.getForEntity("http://localhost:8002/saqueepague/encadeamento", String.class);
 		
+		kafkaProducer.send("tracingZipkinTopic2", consumerRecord.value());
+		kafkaProducer.send("tracingZipkinTopicDependenciaError", consumerRecord.value());
+		
 		LOGGER.info("tracingTopic received payload='{}'", consumerRecord.toString());
 
+	}
+	
+	@KafkaListener(topics = "tracingZipkinTopicDependenciaError", groupId = "demo-group1")
+	public void receiveError(ConsumerRecord<String, String> consumerRecord) throws Exception {
+		
+		LOGGER.info("tracingZipkinTopicDependenciaError received payload='{}'", consumerRecord.toString());
+		
+		throw new Exception();
+		
 	}
 
 }

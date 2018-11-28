@@ -17,18 +17,7 @@ spring:
       probability: 1.0
     web:
       skipPattern: "(^cleanup.*)"
-      
-  stream:
-    kafka:
-      binder:
-        headers:
-          - spanId
-          - spanSampled
-          - spanProcessId
-          - spanParentSpanId
-          - spanTraceId
-          - spanName
-          - messageSent      
+    
       
       
       

@@ -32,7 +32,7 @@ public class DemoRest {
 	@GetMapping("/primeira-requisicao")
 	public ResponseEntity<String> primeiraRequisicao() {
 
-		kafkaProducer.send("tracingTopic", "TESTE");
+		kafkaProducer.send("tracingZipkinTopic", "TESTE");
 		
 		return ResponseEntity.ok("Hello from Spring Boot!");
 	}
