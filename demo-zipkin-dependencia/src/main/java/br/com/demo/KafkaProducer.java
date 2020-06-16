@@ -1,4 +1,4 @@
-package br.com.saquepague;
+package br.com.demo;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

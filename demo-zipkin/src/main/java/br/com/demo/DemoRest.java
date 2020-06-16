@@ -1,4 +1,4 @@
-package br.com.saquepague;
+package br.com.demo;
 
 import org.springframework.beans.factory.annotation.Autowired;
 //import java.math.BigDecimal;
@@ -14,7 +14,7 @@ import org.springframework.web.client.RestTemplate;
 
 
 @RestController
-@RequestMapping("/saqueepague")
+@RequestMapping("/")
 public class DemoRest {
 
 	private final RestTemplate restTemplate;
@@ -44,8 +44,7 @@ public class DemoRest {
 
 	@RequestMapping("/encadeamento")
 	public ResponseEntity<String> encadeamento() throws Exception {
-//		ResponseEntity<String> response = restTemplate.getForEntity("http://localhost:5000/saqueepague/encadeamento", String.class);
-		ResponseEntity<String> response = restTemplate.getForEntity("http://localhost:8001/saqueepague/primeira-requisicao", String.class);
+		ResponseEntity<String> response = restTemplate.getForEntity("http://localhost:8001/primeira-requisicao", String.class);
 		
 //		throw new Exception();
 		

@@ -1,12 +1,12 @@
-package br.com.saquepague;
+package br.com.demo;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class DemoZipkinDependenciaApplication {
+public class DemoZipkinApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(DemoZipkinDependenciaApplication.class, args);
+		SpringApplication.run(DemoZipkinApplication.class, args);
 	}
 }

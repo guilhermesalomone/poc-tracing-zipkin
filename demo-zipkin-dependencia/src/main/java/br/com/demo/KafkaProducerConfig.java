@@ -1,4 +1,4 @@
-package br.com.saquepague;
+package br.com.demo;
 
 import java.util.HashMap;
 import java.util.Map;

@@ -1,4 +1,4 @@
-package br.com.saquepague;
+package br.com.demo;
 
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.slf4j.Logger;
@@ -31,7 +31,7 @@ public class KafkaConsumer {
 	@KafkaListener(topics = "tracingZipkinTopicDependencia", groupId = "demo-group1")
 	public void receive(ConsumerRecord<String, String> consumerRecord) throws Exception {
 		
-		ResponseEntity<String> response = restTemplate.getForEntity("http://localhost:8002/saqueepague/encadeamento", String.class);
+		ResponseEntity<String> response = restTemplate.getForEntity("http://localhost:8002/encadeamento", String.class);
 		
 		kafkaProducer.send("tracingZipkinTopic2", consumerRecord.value());
 		kafkaProducer.send("tracingZipkinTopicDependenciaError", consumerRecord.value());
